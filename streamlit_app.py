@@ -16,7 +16,7 @@ def icon(emoji: str):
 
 icon("🏎️")
 
-st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
+st.subheader("ChatUI App", divider="rainbow", anchor=False)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
@@ -32,7 +32,7 @@ if "selected_model" not in st.session_state:
 # Define model details
 models = {
     "gemma-7b-it": {"name": "Gemma-7b-it", "tokens": 8192, "developer": "Google"},
-    "llama2-70b-4096": {"name": "LLaMA2-70b-chat", "tokens": 4096, "developer": "Meta"},
+    # "llama2-70b-4096": {"name": "LLaMA2-70b-chat", "tokens": 4096, "developer": "Meta"},
     "llama3-70b-8192": {"name": "LLaMA3-70b-8192", "tokens": 8192, "developer": "Meta"},
     "llama3-8b-8192": {"name": "LLaMA3-8b-8192", "tokens": 8192, "developer": "Meta"},
     "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
@@ -43,10 +43,10 @@ col1, col2 = st.columns(2)
 
 with col1:
     model_option = st.selectbox(
-        "Choose a model:",
+        "Choose a LLM model:",
         options=list(models.keys()),
         format_func=lambda x: models[x]["name"],
-        index=4  # Default to mixtral
+        index=3  # Default to mixtral
     )
 
 # Detect model change and clear chat history if model has changed
